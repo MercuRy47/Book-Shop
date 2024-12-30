@@ -1,106 +1,66 @@
-# Sumo's-Beloved-Books
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-### Overview
-- ระบบจัดการบล็อกหนังสือถูกพัฒนาขึ้นเพื่อให้ผู้ใช้งาน (ทั่วไป) สามารถเข้ามาชมข้อมูลหนังสือ รีวิวหนังสือที่อ่าน และดูรายการหนังสือที่น่าสนใจ โดยระบบนี้รองรับการจัดการข้อมูลเฉพาะผู้ดูแลระบบ (Admin) เท่านั้น ซึ่งช่วยให้การจัดการเนื้อหาเป็นไปได้อย่างง่ายดายและปลอดภัย
----
-### Requirement
-#### Functional Requirements
-ผู้ใช้ทั่วไปสามารถ:
-- ดูรายชื่อหนังสือที่อ่านได้
-- ดูรายละเอียดหนังสือ เช่น ชื่อหนังสือ, ผู้เขียน, ปีที่ตีพิมพ์, ประเภท, คำอธิบาย, และคะแนนรีวิว
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Admin สามารถ:
-- ล็อกอินเข้าสู่ระบบ
-- เพิ่มหนังสือใหม่
-- แก้ไขข้อมูลหนังสือ
-- ลบหนังสือที่มีอยู่
-- จัดการรายชื่อหนังสือในหมวด "ที่จะอ่าน" (To-Read List)
----
-### เทคโนโลยีที่ใช้
-#### Frontend
-- Next.js: ใช้สำหรับการพัฒนาเว็บไซต์ (React Framework)
-- Tailwind CSS: ใช้สำหรับออกแบบ UI
-#### Backend
-- API Routes ของ Next.js: ใช้สร้าง API สำหรับการสื่อสารกับฐานข้อมูล
-- Prisma ORM: ใช้จัดการและเชื่อมต่อกับฐานข้อมูล SQL
-- Bcrypt.js: ใช้เข้ารหัสรหัสผ่านของ Admin
-#### Database
-- MySQL หรือ PostgreSQL: ใช้จัดเก็บข้อมูลหนังสือ
----
-### **ความสัมพันธ์ในระบบ (ER Diagram)**
+## About Laravel
 
-#### **1. Entity: Users**
-- **Description:** จัดเก็บข้อมูลของ Admin ผู้ดูแลระบบ  
-- **Attributes:**
-  - `id` (Primary Key): รหัสผู้ใช้ (Admin)  
-  - `username`: ชื่อผู้ใช้  
-  - `password`: รหัสผ่าน (เข้ารหัส)  
-  - `createdAt`: วันที่สร้างบัญชี  
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
----
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-#### **2. Entity: Books**
-- **Description:** เก็บข้อมูลหนังสือทั้งหมดที่ใช้ในระบบ  
-- **Attributes:**
-  - `id` (Primary Key): รหัสหนังสือ  
-  - `title`: ชื่อหนังสือ  
-  - `author`: ผู้แต่ง  
-  - `year`: ปีที่ตีพิมพ์  
-  - `genre`: ประเภทหนังสือ  
-  - `description`: คำอธิบาย  
-  - `rating`: คะแนนรีวิว (เฉลี่ยจาก Read Books)  
-  - `createdAt`: วันที่เพิ่มหนังสือ  
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
----
+## Learning Laravel
 
-#### **3. Entity: ToReadList**
-- **Description:** เก็บข้อมูลหนังสือที่ต้องการอ่านต่อ พร้อมสถานะ  
-- **Attributes:**
-  - `id` (Primary Key): รหัสรายการ  
-  - `bookId` (Foreign Key): รหัสหนังสือ (เชื่อมโยงกับ `Books`)  
-  - `status`: สถานะของหนังสือ เช่น `ยังไม่ได้เริ่ม`, `กำลังอ่าน`, `สำเร็จ`  
-  - `notes`: หมายเหตุหรือบันทึกเพิ่มเติม  
-  - `addedAt`: วันที่เพิ่มเข้ารายการ  
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- **Relationships:**
-  - เชื่อมโยงกับ `Books` ผ่าน `bookId` (1-to-1 หรือ Many-to-1)  
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
----
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-#### **4. Entity: ReadBooks**
-- **Description:** เก็บข้อมูลหนังสือที่อ่านจบ พร้อมข้อมูลรีวิว  
-- **Attributes:**
-  - `id` (Primary Key): รหัสรายการ  
-  - `bookId` (Foreign Key): รหัสหนังสือ (เชื่อมโยงกับ `Books`)  
-  - `review`: บทวิจารณ์หรือความคิดเห็นเกี่ยวกับหนังสือ  
-  - `rating`: คะแนนรีวิว  
-  - `finishedAt`: วันที่อ่านจบ  
+## Laravel Sponsors
 
-- **Relationships:**
-  - เชื่อมโยงกับ `Books` ผ่าน `bookId` (1-to-Many หรือ Many-to-1)  
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
----
+### Premium Partners
 
-### **Relationships ระหว่าง Entities**
-1. **Users (Admin)**  
-   - ไม่มีความสัมพันธ์กับ Entity อื่น เนื่องจากใช้สำหรับการจัดการระบบเท่านั้น  
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-2. **Books → ToReadList**  
-   - 1 หนังสือ (Books) สามารถอยู่ในหลายรายการ "To-Read" ได้  
+## Contributing
 
-3. **Books → ReadBooks**  
-   - 1 หนังสือ (Books) สามารถมีข้อมูลรีวิวหลายรายการใน ReadBooks ได้  
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-4. **ToReadList → Books**  
-   - 1 รายการใน ToReadList จะเกี่ยวข้องกับหนังสือ 1 เล่ม  
+## Code of Conduct
 
-5. **ReadBooks → Books**  
-   - 1 รายการใน ReadBooks จะเกี่ยวข้องกับหนังสือ 1 เล่ม  
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
----
+## Security Vulnerabilities
 
-### **สรุปความสัมพันธ์**
-- **Users** (Admin) มีบทบาทจัดการระบบ  
-- **Books** เป็นศูนย์กลางเชื่อมโยงกับ **ToReadList** และ **ReadBooks**  
-- **ToReadList** และ **ReadBooks** ต่างเป็นฟีเจอร์เสริมที่ใช้งานร่วมกับหนังสือ  
----
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
