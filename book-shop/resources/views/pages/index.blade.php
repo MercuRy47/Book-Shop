@@ -8,6 +8,6 @@
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <p>Welcome</p>
+    <p class="w-screen h-screen text-[100px] flex justify-center items-center">จีเนียสสสส</p>
 </body>
 </html>

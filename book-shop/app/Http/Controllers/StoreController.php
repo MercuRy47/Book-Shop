@@ -8,13 +8,19 @@ use App\Models\Book;
 class StoreController extends Controller
 {
     public function store(){
-        return view('pages.store');
+        $books = Book::paginate(6);
+        return view('pages.store', compact('books'));
     }
 
     public function storage(){
         $books = Book::orderBy('bk_title', 'asc')->paginate(5);
 
         return view('pages.manager.storage', compact('books'));
+    }
+
+    public function detail($id){
+        $book = Book::find($id); 
+        return view('pages.detail', compact('book'));
     }
 
     public function add(){
@@ -31,6 +37,7 @@ class StoreController extends Controller
         $book->bk_stock = $req->stock;
         $book->bk_published_year = $req->published_year;
         $book->bk_description = $req->description;
+        $book->bk_image_url = $req->image_url;
 
         $book->save();
         return redirect('/storage');
@@ -52,6 +59,7 @@ class StoreController extends Controller
         $book->bk_stock = $req->stock;
         $book->bk_published_year = $req->published_year;
         $book->bk_description = $req->description;
+        $book->bk_image_url = $req->image_url;
 
         $book->save();
         return redirect('/storage');

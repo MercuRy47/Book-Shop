@@ -60,6 +60,14 @@
                     <textarea name="description" id="description" class="w-full h-[100px] px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"></textarea>
                 </div>
             </div>
+
+            <!-- Row 5: Image url -->
+            <div class="grid grid-cols-1 gap-4 mb-6">
+                <div>
+                    <label for="image_url" class="block text-gray-700 font-medium">URL</label>
+                    <input type="text" name="image_url" id="image_url" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                </div>
+            </div>
     
             <div class="grid grid-cols-2 gap-4 mb-4">
                 <!-- Submit Button -->

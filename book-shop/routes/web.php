@@ -14,6 +14,7 @@ Route::get('/register', [RegisterController::class, 'index']);
 
 // Store
 Route::get('/store', [StoreController::class, 'store']);
+Route::get('/book/detail/{id}', [StoreController::class, 'detail'])->name('book.details');
 Route::get('/storage', [StoreController::class, 'storage']);
 // Insert
 Route::get('/add', [StoreController::class, 'add']);

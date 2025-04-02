@@ -14,6 +14,7 @@
             <thead>
                 <tr class="bg-blue-500 text-white">
                     <th class="p-2 border">#</th>
+                    <th class="p-2 border">Image</th>
                     <th class="p-2 border">ID</th>
                     <th class="p-2 border">Title</th>
                     <th class="p-2 border">Author</th>
@@ -29,6 +30,7 @@
                 @foreach ($books as $index => $book)
                 <tr class="border hover:bg-gray-100">
                     <td class="p-2 border text-center">{{ $index+1 }}</td>
+                    <td class="p-2 border text-center"><img src="{{ $book->bk_image_url }}" alt="" class="rounded-[50px] w-[65px] h-[65px]"></td>
                     <td class="p-2 border text-center">{{ $book->bk_id }}</td>
                     <td class="p-2 border">{{ $book->bk_title }}</td>
                     <td class="p-2 border">{{ $book->bk_author }}</td>
