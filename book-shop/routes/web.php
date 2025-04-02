@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CartController;
 
 // Login
 Route::get('/login', [LoginController::class, 'index']);
@@ -29,3 +30,9 @@ Route::delete('/book/delete/{id}', [StoreController::class, 'delete'])->name('de
 Route::get('/', function () {
     return view('pages.index');
 });
+
+
+// Cart
+Route::get('/cart', [CartController::class, 'cart']);
+Route::post('/cart/checked', [CartController::class, 'checked']);
+Route::get('/cart/addToCart/{id}', [CartController::class, 'addToCart'])->name('addToCart');
